@@ -21,3 +21,4 @@ site-content
 ### Ignore Visual Studio code files
 /.vscode/
 src/test/java/org/apache/commons/io/output/WriterOutputStreamTest - Copia.java
+WriterOutputStreamTest - Copia.java

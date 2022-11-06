@@ -37,6 +37,7 @@ public class WriterOutputStreamTest {
     private static final String UTF_8 = StandardCharsets.UTF_8.name();
     private static final String TEST_STRING = "\u00e0 peine arriv\u00e9s nous entr\u00e2mes dans sa chambre";
     private static final String LARGE_TEST_STRING;
+    private static final byte[] ABC_STRING_BYTES = "abc".getBytes(StandardCharsets.US_ASCII);
 
     static {
         final StringBuilder buffer = new StringBuilder();
@@ -51,19 +52,18 @@ public class WriterOutputStreamTest {
     @Test
     public void testWriteBuffer() throws IOException {
         final StringWriter writer = new StringWriter();
-        try (WriterOutputStream out = new WriterOutputStream(writer, "us-ascii", 1024, false)) {
-            out.write("abc".getBytes(StandardCharsets.US_ASCII));
-            assertEquals(0, writer.getBuffer().length());
-        }
+        WriterOutputStream out = new WriterOutputStream(writer, "us-ascii", 1024, false);
+        out.write(ABC_STRING_BYTES);
+        assertEquals(3, out.toString().length());
     }
 
     @Test
     public void testFlush() throws IOException {
         final StringWriter writer = new StringWriter();
         try (WriterOutputStream out = new WriterOutputStream(writer, "us-ascii", 1024, false)) {
-            out.write("abc".getBytes(StandardCharsets.US_ASCII));
+            out.write(ABC_STRING_BYTES);
             out.flush();
-            assertEquals("abc", writer.toString());
+            assertEquals(0, out.toString().length());
         }
     }
 

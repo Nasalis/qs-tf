@@ -49,11 +49,19 @@ public class WriterOutputStreamTest {
     private final Random random = new Random();
 
     @Test
-    public void testFlush() throws IOException {
+    public void testWriteBuffer() throws IOException {
         final StringWriter writer = new StringWriter();
         try (WriterOutputStream out = new WriterOutputStream(writer, "us-ascii", 1024, false)) {
             out.write("abc".getBytes(StandardCharsets.US_ASCII));
             assertEquals(0, writer.getBuffer().length());
+        }
+    }
+
+    @Test
+    public void testFlush() throws IOException {
+        final StringWriter writer = new StringWriter();
+        try (WriterOutputStream out = new WriterOutputStream(writer, "us-ascii", 1024, false)) {
+            out.write("abc".getBytes(StandardCharsets.US_ASCII));
             out.flush();
             assertEquals("abc", writer.toString());
         }

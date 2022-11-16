@@ -99,26 +99,39 @@ public class TestCPDSConnectionFactory {
                 final PooledConnection pcon3 = pool.borrowObject().getPooledConnection();
                 assertNotEquals(pcon3, pcon1); // better not get baddie back
                 assertFalse(pc.getListeners().contains(factory)); // verify cleanup
-                assertEquals(2, pool.getNumActive());
-                assertEquals(0, pool.getNumIdle());
+
+                int activeCountNewConection = 2;
+                int idleCountNewConection = 0;
+
+                assertEquals(activeCountNewConection, pool.getNumActive());
+                assertEquals(idleCountNewConection, pool.getNumIdle());
 
                 // Return good connections back to pool
                 pcon2.getConnection().close();
                 pcon3.getConnection().close();
-                assertEquals(2, pool.getNumIdle());
-                assertEquals(0, pool.getNumActive());
+
+                int activeCountWhenClosedConnection = 2;
+                int idleCountWhenClosedConnection = 0;
+
+                assertEquals(activeCountWhenClosedConnection, pool.getNumIdle());
+                assertEquals(idleCountWhenClosedConnection, pool.getNumActive());
 
                 // Verify pc is closed
                 assertThrows(SQLException.class, pc::getConnection, "Expecting SQLException using closed PooledConnection");
 
                 // Back from the dead - ignore the ghost!
+                int activeCountWhenFirstConnectionClose = 2;
+                int idleCountWhenFirstConnectionClose = 0;
+
                 con1.close();
-                assertEquals(2, pool.getNumIdle());
-                assertEquals(0, pool.getNumActive());
+                assertEquals(activeCountWhenFirstConnectionClose, pool.getNumIdle());
+                assertEquals(idleCountWhenFirstConnectionClose, pool.getNumActive());
 
                 // Clear pool
+                int idleCountWhenCleatThePool = 0;
+
                 pool.clear();
-                assertEquals(0, pool.getNumIdle());
+                assertEquals(idleCountWhenCleatThePool, pool.getNumIdle());
             }
         }
     }

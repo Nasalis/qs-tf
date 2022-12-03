@@ -811,8 +811,6 @@ public class WSDLToCorbaBindingTest {
                             "MixedArrayType", "ns1");
                         assertEquals(paramtype.getIdltype(), idltype);
                         assertEquals(paramtype.getMode().toString(), "IN");
-                    } else if ("typeMapping".equals(extElement.getElementType().getLocalPart())) {
-                        System.out.println("x");
                     }
                 }
             }

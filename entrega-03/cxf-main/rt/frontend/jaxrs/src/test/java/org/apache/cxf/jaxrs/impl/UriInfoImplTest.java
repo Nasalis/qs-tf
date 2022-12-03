@@ -524,7 +524,6 @@ public class UriInfoImplTest {
 
     @Test
     public void testGetMatchedURIsSubResourceLocator() throws Exception {
-        System.out.println("testGetMatchedURIsSubResourceLocator");
         Message m = mockMessage("http://localhost:8080/app", "/foo/sub");
         OperationResourceInfoStack oriStack = new OperationResourceInfoStack();
         ClassResourceInfo rootCri = getCri(RootResource.class, true);

@@ -81,7 +81,6 @@ public final class WSDiscoveryClientTest {
         // Disable the test on Redhat Enterprise Linux which doesn't enable the UDP broadcast by default
         if ("Linux".equals(System.getProperties().getProperty("os.name"))
             && System.getProperties().getProperty("os.version").indexOf("el") > 0) {
-            System.out.println("Skipping MultiResponse test for REL");
             return;
         }
 

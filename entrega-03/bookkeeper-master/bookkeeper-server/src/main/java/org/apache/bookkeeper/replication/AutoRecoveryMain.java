@@ -65,6 +65,7 @@ import org.slf4j.LoggerFactory;
  *
  * <p>TODO: eliminate the direct usage of zookeeper here {@link https://github.com/apache/bookkeeper/issues/1332}
  */
+@Before 
 public class AutoRecoveryMain {
     private static final Logger LOG = LoggerFactory
             .getLogger(AutoRecoveryMain.class);

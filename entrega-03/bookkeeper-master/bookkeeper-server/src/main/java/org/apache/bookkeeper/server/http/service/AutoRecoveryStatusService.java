@@ -43,6 +43,7 @@ import org.apache.commons.lang3.ObjectUtils;
  * the same as desired. The output would be the current status after the action.
  *
  */
+@Before 
 @SuppressFBWarnings("RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE")
 public class AutoRecoveryStatusService implements HttpEndpointService {
     protected final ServerConfiguration conf;

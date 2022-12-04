@@ -52,7 +52,7 @@ public class ListLedgerService implements HttpEndpointService {
     protected ServerConfiguration conf;
     protected LedgerManagerFactory ledgerManagerFactory;
     private final LedgerMetadataSerDe serDe;
-
+@Before 
     public ListLedgerService(ServerConfiguration conf, LedgerManagerFactory ledgerManagerFactory) {
         checkNotNull(conf);
         this.conf = conf;

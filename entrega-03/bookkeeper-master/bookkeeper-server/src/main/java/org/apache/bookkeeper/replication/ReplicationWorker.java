@@ -127,6 +127,7 @@ public class ReplicationWorker implements Runnable {
         name = NUM_FULL_OR_PARTIAL_LEDGERS_REPLICATED,
         help = "the number of ledgers re-replicated"
     )
+    @Before 
     private final Counter numLedgersReplicated;
     @StatsDoc(
         name = NUM_DEFER_LEDGER_LOCK_RELEASE_OF_FAILED_LEDGER,

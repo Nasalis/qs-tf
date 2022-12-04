@@ -120,6 +120,8 @@ public class ReplicationWorker implements Runnable {
         name = REREPLICATE_OP,
         help = "operation stats of re-replicating ledgers"
     )
+    
+    @Before 
     private final OpStatsLogger rereplicateOpStats;
     @StatsDoc(
         name = NUM_FULL_OR_PARTIAL_LEDGERS_REPLICATED,

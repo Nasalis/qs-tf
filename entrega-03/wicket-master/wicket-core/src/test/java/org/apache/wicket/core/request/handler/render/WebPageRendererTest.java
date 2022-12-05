@@ -103,6 +103,7 @@ class WebPageRendererTest
 
 		renderer.respond(requestCycle);
 
+		assertNotNull(response);
 		verify(response).write(any(byte[].class));
 		verify(response, never()).sendRedirect(anyString());
 	}
@@ -179,6 +180,7 @@ class WebPageRendererTest
 
 		renderer.respond(requestCycle);
 
+		assertNotNull(response);
 		verify(response, never()).write(any(byte[].class));
 		verify(response).sendRedirect(isNull());
 	}
@@ -203,6 +205,7 @@ class WebPageRendererTest
 
 		renderer.respond(requestCycle);
 
+		assertNotNull(response);
 		verify(response).sendRedirect(isNull());
 		verify(response, never()).write(any(byte[].class));
 
@@ -235,6 +238,7 @@ class WebPageRendererTest
 
 		renderer.respond(requestCycle);
 
+		assertNotNull(response);
 		verify(response).write(any(byte[].class));
 		verify(response, never()).sendRedirect(anyString());
 	}
@@ -268,6 +272,7 @@ class WebPageRendererTest
 
 		renderer.respond(requestCycle);
 
+		assertNotNull(response);
 		verify(response).write(any(byte[].class));
 		verify(response, never()).sendRedirect(anyString());
 	}
